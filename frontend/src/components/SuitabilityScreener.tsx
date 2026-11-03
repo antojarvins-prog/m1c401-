@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, CheckCircle2, ArrowRight, RotateCcw, AlertTriangle, ShieldCheck, HeartHandshake, Phone, MessageSquare } from 'lucide-react';
+import { Sparkles, ArrowRight, RotateCcw, AlertTriangle, ShieldCheck, HeartHandshake, Phone } from 'lucide-react';
 
 interface ScreenerProps {
   onOpenBooking: () => void;
@@ -36,31 +36,31 @@ export default function SuitabilityScreener({ onOpenBooking }: ScreenerProps) {
   };
 
   return (
-    <section id="screener" className="py-20 lg:py-28 bg-navy-850 border-t border-navy-800 relative">
+    <section id="screener" className="py-20 lg:py-28 bg-ivory border-t border-linen-300 relative">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center space-y-4 mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-semibold uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-linen-200 border border-linen-300 text-forest-800 text-xs font-semibold uppercase tracking-wider font-sans">
+            <Sparkles className="w-3.5 h-3.5 text-bronze-600" />
             <span>Interactive Clinical Guidance</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white font-display tracking-tight">
-            Confidential Suitability Screener
+          <h2 className="text-3xl sm:text-5xl font-normal text-forest-950 font-serif tracking-tight">
+            Confidential Suitability Assessment
           </h2>
-          <p className="text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Answer 4 confidential questions to determine whether our 90-day residential programme in Bengaluru is the appropriate clinical step.
+          <p className="text-base text-charcoal-700 max-w-2xl mx-auto leading-relaxed font-sans font-light">
+            Answer 4 confidential questions to determine whether our 90-day residential sanctuary in Bengaluru is the appropriate clinical step.
           </p>
         </div>
 
         {/* Screener Interactive Card */}
-        <div className="rounded-3xl bg-navy-900 border border-teal-500/30 p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+        <div className="rounded-3xl bg-ivory-pure border border-linen-300 p-7 sm:p-11 shadow-sm relative overflow-hidden">
           
           {!isCompleted ? (
             <div>
               {/* Stepper Progress Indicator */}
-              <div className="flex items-center justify-between mb-8 pb-4 border-b border-slate-800">
-                <span className="text-xs font-mono font-bold text-teal-400">
+              <div className="flex items-center justify-between mb-8 pb-4 border-b border-linen-200 font-sans">
+                <span className="text-xs font-bold text-forest-900">
                   Step {currentStep} of 4
                 </span>
                 <div className="flex items-center gap-2">
@@ -69,10 +69,10 @@ export default function SuitabilityScreener({ onOpenBooking }: ScreenerProps) {
                       key={step} 
                       className={`h-2 rounded-full transition-all ${
                         currentStep === step 
-                          ? 'w-8 bg-teal-400' 
+                          ? 'w-8 bg-forest-800' 
                           : currentStep > step 
-                            ? 'w-4 bg-teal-600' 
-                            : 'w-4 bg-navy-800'
+                            ? 'w-4 bg-sage-500' 
+                            : 'w-4 bg-linen-200'
                       }`} 
                     />
                   ))}
@@ -81,8 +81,8 @@ export default function SuitabilityScreener({ onOpenBooking }: ScreenerProps) {
 
               {/* Step 1: For Whom */}
               {currentStep === 1 && (
-                <div className="space-y-6 animate-fade-in">
-                  <h3 className="text-xl sm:text-2xl font-bold text-white font-display">
+                <div className="space-y-6 animate-fade-in font-sans">
+                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-forest-950">
                     1. Who are you seeking confidential guidance for?
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -94,12 +94,12 @@ export default function SuitabilityScreener({ onOpenBooking }: ScreenerProps) {
                       <button
                         key={opt.value}
                         onClick={() => handleSelect('forWhom', opt.value)}
-                        className="p-5 rounded-2xl bg-navy-850 border border-slate-700/80 hover:border-teal-400 hover:bg-navy-800 text-left transition-all group"
+                        className="p-5 rounded-2xl bg-linen-50 border border-linen-200 hover:border-forest-800 hover:bg-linen-100 text-left transition-all group"
                       >
-                        <div className="text-base font-bold text-white group-hover:text-teal-300 mb-1">
+                        <div className="text-base font-serif font-bold text-forest-950 group-hover:text-forest-700 mb-1">
                           {opt.label}
                         </div>
-                        <div className="text-xs text-slate-400">
+                        <div className="text-xs text-charcoal-500 font-light">
                           {opt.sub}
                         </div>
                       </button>
@@ -110,8 +110,8 @@ export default function SuitabilityScreener({ onOpenBooking }: ScreenerProps) {
 
               {/* Step 2: Substance / Issue */}
               {currentStep === 2 && (
-                <div className="space-y-6 animate-fade-in">
-                  <h3 className="text-xl sm:text-2xl font-bold text-white font-display">
+                <div className="space-y-6 animate-fade-in font-sans">
+                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-forest-950">
                     2. What is the primary area of concern?
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -124,12 +124,12 @@ export default function SuitabilityScreener({ onOpenBooking }: ScreenerProps) {
                       <button
                         key={opt.value}
                         onClick={() => handleSelect('substance', opt.value)}
-                        className="p-5 rounded-2xl bg-navy-850 border border-slate-700/80 hover:border-teal-400 hover:bg-navy-800 text-left transition-all group"
+                        className="p-5 rounded-2xl bg-linen-50 border border-linen-200 hover:border-forest-800 hover:bg-linen-100 text-left transition-all group"
                       >
-                        <div className="text-base font-bold text-white group-hover:text-teal-300 mb-1">
+                        <div className="text-base font-serif font-bold text-forest-950 group-hover:text-forest-700 mb-1">
                           {opt.label}
                         </div>
-                        <div className="text-xs text-slate-400">
+                        <div className="text-xs text-charcoal-500 font-light">
                           {opt.sub}
                         </div>
                       </button>
@@ -140,8 +140,8 @@ export default function SuitabilityScreener({ onOpenBooking }: ScreenerProps) {
 
               {/* Step 3: Medical / Withdrawal State */}
               {currentStep === 3 && (
-                <div className="space-y-6 animate-fade-in">
-                  <h3 className="text-xl sm:text-2xl font-bold text-white font-display">
+                <div className="space-y-6 animate-fade-in font-sans">
+                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-forest-950">
                     3. What is the current physical & medical withdrawal status?
                   </h3>
                   <div className="grid grid-cols-1 gap-3">
@@ -154,17 +154,17 @@ export default function SuitabilityScreener({ onOpenBooking }: ScreenerProps) {
                       <button
                         key={opt.value}
                         onClick={() => handleSelect('medicalStatus', opt.value)}
-                        className="p-4 rounded-xl bg-navy-850 border border-slate-700/80 hover:border-teal-400 hover:bg-navy-800 text-left transition-all group flex items-start justify-between"
+                        className="p-4 rounded-2xl bg-linen-50 border border-linen-200 hover:border-forest-800 hover:bg-linen-100 text-left transition-all group flex items-start justify-between"
                       >
                         <div>
-                          <div className="text-sm font-bold text-white group-hover:text-teal-300 mb-0.5">
+                          <div className="text-sm font-serif font-bold text-forest-950 group-hover:text-forest-700 mb-0.5">
                             {opt.label}
                           </div>
-                          <div className="text-xs text-slate-400">
+                          <div className="text-xs text-charcoal-500 font-light">
                             {opt.sub}
                           </div>
                         </div>
-                        <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-teal-400 shrink-0 mt-1" />
+                        <ArrowRight className="w-4 h-4 text-charcoal-400 group-hover:text-forest-800 shrink-0 mt-1" />
                       </button>
                     ))}
                   </div>
@@ -173,8 +173,8 @@ export default function SuitabilityScreener({ onOpenBooking }: ScreenerProps) {
 
               {/* Step 4: Primary Goal */}
               {currentStep === 4 && (
-                <div className="space-y-6 animate-fade-in">
-                  <h3 className="text-xl sm:text-2xl font-bold text-white font-display">
+                <div className="space-y-6 animate-fade-in font-sans">
+                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-forest-950">
                     4. What is the most critical outcome you wish to achieve?
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -187,12 +187,12 @@ export default function SuitabilityScreener({ onOpenBooking }: ScreenerProps) {
                       <button
                         key={opt.value}
                         onClick={() => handleSelect('primaryGoal', opt.value)}
-                        className="p-5 rounded-2xl bg-navy-850 border border-slate-700/80 hover:border-teal-400 hover:bg-navy-800 text-left transition-all group"
+                        className="p-5 rounded-2xl bg-linen-50 border border-linen-200 hover:border-forest-800 hover:bg-linen-100 text-left transition-all group"
                       >
-                        <div className="text-base font-bold text-white group-hover:text-teal-300 mb-1">
+                        <div className="text-base font-serif font-bold text-forest-950 group-hover:text-forest-700 mb-1">
                           {opt.label}
                         </div>
-                        <div className="text-xs text-slate-400">
+                        <div className="text-xs text-charcoal-500 font-light">
                           {opt.sub}
                         </div>
                       </button>
@@ -204,33 +204,33 @@ export default function SuitabilityScreener({ onOpenBooking }: ScreenerProps) {
             </div>
           ) : (
             /* Results Screen */
-            <div className="space-y-6 animate-fade-in">
+            <div className="space-y-6 animate-fade-in font-sans">
               {answers.medicalStatus === 'acute' ? (
                 /* Emergency Hospital Guidance */
-                <div className="p-6 rounded-2xl bg-amber-500/10 border border-amber-500/30 space-y-4">
-                  <div className="flex items-center gap-3 text-amber-400">
+                <div className="p-7 rounded-3xl bg-linen-150 border border-linen-300 space-y-4">
+                  <div className="flex items-center gap-3 text-bronze-700">
                     <AlertTriangle className="w-6 h-6 shrink-0" />
-                    <h4 className="text-xl font-bold font-display">
+                    <h4 className="text-xl font-serif font-bold text-forest-950">
                       Immediate Hospital Stabilization Recommended First
                     </h4>
                   </div>
-                  <p className="text-sm text-slate-300 leading-relaxed">
-                    Based on your input indicating acute severe withdrawal or medical instability, immediate medical safety comes first. SPJ is a post-crisis residential rehabilitation institution, not an acute medical detoxification hospital.
+                  <p className="text-sm text-charcoal-700 leading-relaxed font-light">
+                    Based on your input indicating acute severe withdrawal or medical instability, immediate physical safety comes first. SPJ is a post-crisis residential rehabilitation institution, not an acute medical detoxification hospital.
                   </p>
-                  <p className="text-sm text-slate-300 leading-relaxed">
-                    We recommend immediate evaluation at a tertiary multispecialty hospital. Once medical stabilization is complete, the resident is warmly welcomed into our 90-day RESET 360° programme.
+                  <p className="text-sm text-charcoal-700 leading-relaxed font-light">
+                    We recommend immediate evaluation at a tertiary multispecialty hospital. Once medical stabilization is complete, the resident is warmly welcomed into our 90-day RESET 360° sanctuary.
                   </p>
                   <div className="pt-2 flex flex-wrap gap-3">
                     <a 
                       href="tel:+918029559040"
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500 text-slate-950 font-bold text-xs shadow-md"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-forest-800 text-ivory font-medium text-xs shadow-sm hover:bg-forest-900"
                     >
-                      <Phone className="w-4 h-4" />
+                      <Phone className="w-3.5 h-3.5 text-bronze-300" />
                       <span>Speak with Our Clinical Triage Physician</span>
                     </a>
                     <button
                       onClick={handleReset}
-                      className="px-4 py-2.5 rounded-xl bg-navy-800 text-slate-300 text-xs font-semibold hover:text-white"
+                      className="px-5 py-2.5 rounded-full bg-linen-200 text-charcoal-700 text-xs font-semibold hover:bg-linen-300"
                     >
                       Restart Assessment
                     </button>
@@ -239,50 +239,50 @@ export default function SuitabilityScreener({ onOpenBooking }: ScreenerProps) {
               ) : (
                 /* High Suitability Match */
                 <div className="space-y-6">
-                  <div className="flex items-center gap-3 text-teal-400">
-                    <div className="w-10 h-10 rounded-xl bg-teal-500/20 border border-teal-500/30 flex items-center justify-center">
-                      <ShieldCheck className="w-6 h-6 text-teal-300" />
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-2xl bg-sage-100 border border-sage-200 flex items-center justify-center">
+                      <ShieldCheck className="w-6 h-6 text-forest-800" />
                     </div>
                     <div>
-                      <span className="text-xs font-bold uppercase tracking-wider text-teal-400 font-mono">
+                      <span className="text-xs font-bold uppercase tracking-widest text-bronze-700 font-sans">
                         Clinical Assessment Result
                       </span>
-                      <h4 className="text-2xl font-extrabold text-white font-display">
+                      <h4 className="text-2xl sm:text-3xl font-serif font-bold text-forest-950">
                         High Suitability for RESET 360° Residential Pathway
                       </h4>
                     </div>
                   </div>
 
-                  <p className="text-slate-300 text-sm leading-relaxed">
-                    Your profile matches our person-centred rehabilitation model. Because the individual is medically stable, they can fully engage in the <strong className="text-white">90-day residential journey</strong>, the <strong className="text-white">MIND360 cognitive restructuring curriculum</strong>, and our <strong className="text-white">12-month LIFE360 aftercare continuum</strong> in Bengaluru.
+                  <p className="text-charcoal-700 text-sm sm:text-base leading-relaxed font-light">
+                    Your profile matches our person-centred rehabilitation model. Because the individual is medically stable, they can fully engage in the <strong className="text-forest-950 font-medium">90-day residential journey</strong>, the <strong className="text-forest-950 font-medium">MIND360 cognitive restructuring curriculum</strong>, and our <strong className="text-forest-950 font-medium">12-month LIFE360 aftercare continuum</strong> in Bengaluru.
                   </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 rounded-xl bg-navy-850 border border-slate-800 text-xs">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 rounded-2xl bg-linen-50 border border-linen-200 text-xs">
                     <div>
-                      <span className="text-slate-400 block">Recommended Pathway:</span>
-                      <strong className="text-teal-300">90-Day Residential Journey</strong>
+                      <span className="text-charcoal-500 block">Recommended Pathway:</span>
+                      <strong className="text-forest-950 text-sm font-serif">90-Day Residential Journey</strong>
                     </div>
                     <div>
-                      <span className="text-slate-400 block">Staffing Environment:</span>
-                      <strong className="text-white">15-Bed Boutique Setting</strong>
+                      <span className="text-charcoal-500 block">Sanctuary Scale:</span>
+                      <strong className="text-forest-950 text-sm font-serif">15-Bed Boutique Sanctuary</strong>
                     </div>
                     <div>
-                      <span className="text-slate-400 block">Follow-up Continuity:</span>
-                      <strong className="text-emerald-400">12 Months (LIFE360)</strong>
+                      <span className="text-charcoal-500 block">Continuity Protocol:</span>
+                      <strong className="text-forest-950 text-sm font-serif">12 Months (LIFE360)</strong>
                     </div>
                   </div>
 
                   <div className="pt-2 flex flex-col sm:flex-row items-center gap-4">
                     <button
                       onClick={onOpenBooking}
-                      className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-600 text-white font-bold text-sm shadow-lg shadow-teal-500/25 flex items-center justify-center gap-2 hover:from-teal-400 hover:to-emerald-500"
+                      className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-forest-800 hover:bg-forest-900 text-ivory font-medium text-sm shadow-md flex items-center justify-center gap-2"
                     >
-                      <HeartHandshake className="w-4 h-4" />
+                      <HeartHandshake className="w-4 h-4 text-bronze-300" />
                       <span>Schedule In-Person / Video Consultation</span>
                     </button>
                     <button
                       onClick={handleReset}
-                      className="w-full sm:w-auto px-5 py-3.5 rounded-xl bg-navy-850 text-slate-300 hover:text-white border border-slate-700 text-xs font-semibold flex items-center justify-center gap-1.5"
+                      className="w-full sm:w-auto px-5 py-3.5 rounded-full bg-linen-150 text-charcoal-700 hover:bg-linen-200 text-xs font-semibold flex items-center justify-center gap-1.5"
                     >
                       <RotateCcw className="w-3.5 h-3.5" />
                       <span>Retake Assessment</span>

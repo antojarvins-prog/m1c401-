@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, CheckCircle2, ChevronRight, Activity, Brain, UserCheck, Shield, Sparkles, Clock, ArrowRight } from 'lucide-react';
+import { CheckCircle2, ChevronRight, Activity, Calendar, Sparkles } from 'lucide-react';
 
 export default function Journey90Days() {
   const [activeStage, setActiveStage] = useState(0);
@@ -25,7 +25,7 @@ export default function Journey90Days() {
       name: "STABILISE",
       days: "Days 8–14",
       milestone: "Clinical Stability & Engagement Review",
-      tagline: "Restoring physiological rhythm, nutrition balance, and initial therapeutic alliance.",
+      tagline: "Restoring physiological balance, circadian rhythm, and therapeutic alliance.",
       details: [
         "Continuous 24/7 nursing observation, vital sign monitoring, and medication reconciliation.",
         "Dietary and metabolic replenishment supervised by the Clinical Dietitian.",
@@ -99,7 +99,7 @@ export default function Journey90Days() {
       step: "07",
       name: "REINTEGRATE",
       days: "Days 76–90",
-      milestone: "Individual LIFE360 Continuity Plan",
+      milestone: "Individual LIFE360 Recovery Continuity Plan",
       tagline: "Phased transition into real life with a complete 12-month post-discharge support system.",
       details: [
         "Graduated home visits and real-world exposure trials with clinical debriefing.",
@@ -113,43 +113,43 @@ export default function Journey90Days() {
   ];
 
   return (
-    <section id="programme-90" className="py-20 lg:py-28 bg-navy-900 border-t border-navy-800 relative">
+    <section id="programme-90" className="py-20 lg:py-28 bg-linen-50 border-t border-linen-300 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center space-y-4 mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 text-xs font-semibold uppercase tracking-wider">
-            RESET 360° Programme
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-linen-200 border border-linen-300 text-forest-800 text-xs font-semibold uppercase tracking-wider font-sans">
+            RESET 360° Residential Pathway
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white font-display tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-normal text-forest-950 font-serif tracking-tight">
             The 90-Day Residential Patient Journey
           </h2>
-          <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
+          <p className="text-base sm:text-lg text-charcoal-700 leading-relaxed font-sans font-light">
             A structured, 7-milestone therapeutic progression designed to rebuild mind, behavior, and life step by step before returning to the real world.
           </p>
         </div>
 
-        {/* Milestone Navigation Pills (Horizontal Scroller on Mobile) */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none no-scrollbar">
+        {/* Milestone Navigation Pills (Horizontal Scroller) */}
+        <div className="flex items-center gap-2.5 overflow-x-auto pb-4 mb-8 scrollbar-none no-scrollbar">
           {stages.map((stage, idx) => (
             <button
               key={idx}
               onClick={() => setActiveStage(idx)}
-              className={`shrink-0 px-4 py-3 rounded-xl border text-left transition-all ${
+              className={`shrink-0 px-4 py-3 rounded-2xl border text-left transition-all ${
                 activeStage === idx 
-                  ? 'bg-teal-500/20 border-teal-400 text-white shadow-lg shadow-teal-500/10' 
-                  : 'bg-navy-850 border-slate-700/60 text-slate-400 hover:text-slate-200 hover:border-slate-600'
+                  ? 'bg-forest-800 border-forest-800 text-ivory shadow-md' 
+                  : 'bg-ivory-pure border-linen-300 text-charcoal-600 hover:border-sage-400'
               }`}
             >
-              <div className="flex items-center gap-2">
-                <span className={`text-xs font-black font-mono ${activeStage === idx ? 'text-teal-300' : 'text-slate-500'}`}>
+              <div className="flex items-center gap-2 font-sans">
+                <span className={`text-xs font-bold ${activeStage === idx ? 'text-bronze-300' : 'text-charcoal-400'}`}>
                   {stage.step}
                 </span>
-                <span className="text-xs font-semibold px-1.5 py-0.5 rounded bg-navy-900 text-slate-300">
+                <span className={`text-xs px-2 py-0.5 rounded ${activeStage === idx ? 'bg-forest-900 text-linen-200' : 'bg-linen-150 text-charcoal-700'}`}>
                   {stage.days}
                 </span>
               </div>
-              <div className="text-sm font-bold mt-1 whitespace-nowrap">
+              <div className="text-sm font-serif font-bold mt-1 whitespace-nowrap">
                 {stage.name}
               </div>
             </button>
@@ -157,50 +157,49 @@ export default function Journey90Days() {
         </div>
 
         {/* Active Stage Detailed Card */}
-        <div className="rounded-3xl bg-navy-850 border border-teal-500/30 p-8 lg:p-12 shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-teal-500/5 rounded-full blur-[120px] pointer-events-none" />
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10">
+        <div className="rounded-3xl bg-ivory-pure border border-linen-300 p-8 sm:p-12 shadow-sm relative overflow-hidden">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
             {/* Left Column: Stage Summary */}
             <div className="lg:col-span-5 space-y-6">
-              <div className="flex items-center gap-3">
-                <span className="text-4xl sm:text-5xl font-black text-teal-400 font-display">
+              <div className="flex items-baseline gap-4">
+                <span className="text-5xl sm:text-6xl font-serif text-bronze-600 font-normal">
                   {stages[activeStage].step}
                 </span>
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-teal-300 px-2 py-0.5 rounded bg-teal-500/10 border border-teal-500/20">
+                  <span className="text-xs font-bold uppercase tracking-wider text-forest-800 px-2.5 py-0.5 rounded bg-sage-100 font-sans">
                     {stages[activeStage].days}
                   </span>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white font-display mt-1">
+                  <h3 className="text-2xl sm:text-3xl font-serif font-bold text-forest-950 mt-1">
                     {stages[activeStage].name}
                   </h3>
                 </div>
               </div>
 
-              <p className="text-slate-300 text-base leading-relaxed">
+              <p className="text-charcoal-700 text-base leading-relaxed font-sans font-light">
                 {stages[activeStage].tagline}
               </p>
 
-              <div className="p-4 rounded-xl bg-navy-900/90 border border-slate-700/60 space-y-2">
-                <div className="text-xs font-bold uppercase tracking-wider text-teal-400">
+              <div className="p-5 rounded-2xl bg-linen-100 border border-linen-300 space-y-2">
+                <div className="text-xs font-bold uppercase tracking-wider text-forest-800 font-sans">
                   Key Milestone Deliverable
                 </div>
-                <div className="text-base font-bold text-white flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-teal-400 shrink-0" />
+                <div className="text-base font-bold text-forest-950 flex items-center gap-2.5 font-serif">
+                  <CheckCircle2 className="w-5 h-5 text-sage-600 shrink-0" />
                   <span>{stages[activeStage].deliverable}</span>
                 </div>
               </div>
 
-              <div className="text-xs text-slate-400 flex items-center gap-2">
-                <Activity className="w-4 h-4 text-teal-400" />
-                <span>Focus: <strong className="text-slate-200">{stages[activeStage].focus}</strong></span>
+              <div className="text-xs text-charcoal-500 flex items-center gap-2 font-sans">
+                <Activity className="w-4 h-4 text-bronze-600" />
+                <span>Clinical Focus: <strong className="text-forest-900 font-medium">{stages[activeStage].focus}</strong></span>
               </div>
             </div>
 
-            {/* Right Column: Key Protocols & Interventions */}
+            {/* Right Column: Protocols */}
             <div className="lg:col-span-7 space-y-4">
-              <h4 className="text-sm font-bold uppercase tracking-wider text-slate-400">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-charcoal-400 font-sans">
                 Core Clinical Protocols in Stage {stages[activeStage].step}:
               </h4>
 
@@ -208,36 +207,36 @@ export default function Journey90Days() {
                 {stages[activeStage].details.map((item, i) => (
                   <div 
                     key={i} 
-                    className="p-4 rounded-xl bg-navy-900 border border-slate-700/60 flex items-start gap-3.5 hover:border-slate-600 transition-colors"
+                    className="p-4 rounded-2xl bg-linen-50 border border-linen-200 flex items-start gap-3.5 hover:border-linen-300 transition-colors"
                   >
-                    <div className="w-6 h-6 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold font-mono">
+                    <div className="w-6 h-6 rounded-full bg-sage-100 text-forest-800 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold font-sans">
                       {i + 1}
                     </div>
-                    <p className="text-sm text-slate-200 leading-relaxed">
+                    <p className="text-sm text-charcoal-800 leading-relaxed font-sans font-light">
                       {item}
                     </p>
                   </div>
                 ))}
               </div>
 
-              {/* Navigation buttons to next stage */}
-              <div className="pt-4 flex items-center justify-between">
+              {/* Navigation Stepper */}
+              <div className="pt-4 flex items-center justify-between border-t border-linen-200 mt-6 font-sans">
                 <button
                   disabled={activeStage === 0}
                   onClick={() => setActiveStage(prev => Math.max(0, prev - 1))}
-                  className="px-4 py-2 rounded-lg bg-navy-900 text-slate-300 hover:text-white disabled:opacity-30 disabled:pointer-events-none text-xs font-semibold"
+                  className="px-4 py-2 rounded-full bg-linen-150 text-charcoal-700 hover:text-forest-950 disabled:opacity-30 disabled:pointer-events-none text-xs font-semibold"
                 >
                   ← Previous Stage
                 </button>
 
-                <div className="text-xs text-slate-400 font-mono">
+                <div className="text-xs text-charcoal-400 font-medium">
                   Stage {activeStage + 1} of 7
                 </div>
 
                 <button
                   disabled={activeStage === stages.length - 1}
                   onClick={() => setActiveStage(prev => Math.min(stages.length - 1, prev + 1))}
-                  className="px-4 py-2 rounded-lg bg-teal-500 hover:bg-teal-400 text-white disabled:opacity-30 disabled:pointer-events-none text-xs font-semibold flex items-center gap-1.5"
+                  className="px-4 py-2 rounded-full bg-forest-800 hover:bg-forest-900 text-ivory disabled:opacity-30 disabled:pointer-events-none text-xs font-medium flex items-center gap-1.5"
                 >
                   <span>Next Stage</span>
                   <ChevronRight className="w-3.5 h-3.5" />
@@ -249,7 +248,7 @@ export default function Journey90Days() {
           </div>
 
           {/* Clinical Milestone Disclaimer Note from Slide 08 */}
-          <div className="mt-8 pt-4 border-t border-slate-800 text-xs text-slate-400 italic">
+          <div className="mt-8 pt-4 border-t border-linen-200 text-xs text-charcoal-400 italic font-sans">
             * Note: These are programme milestones, not fixed medical recovery periods. Patients can require additional treatment or an adapted level of care based on ongoing clinical assessment.
           </div>
         </div>

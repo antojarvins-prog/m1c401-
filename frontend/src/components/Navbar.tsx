@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Shield, Phone, Sparkles, Menu, X, ArrowRight, HeartHandshake, Compass } from 'lucide-react';
+import { Phone, Compass, ArrowRight, Menu, X, Sparkles, ShieldCheck } from 'lucide-react';
 
 interface NavbarProps {
   onOpenBooking: () => void;
@@ -10,154 +10,163 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
 
   return (
     <>
-      {/* Top Clinical Notification Banner */}
-      <div className="bg-gradient-to-r from-navy-950 via-teal-950 to-navy-950 border-b border-teal-500/20 text-xs py-2 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-slate-300">
-          <div className="flex items-center gap-2">
+      {/* Top Clinical Triage Ribbon */}
+      <div className="bg-forest-900 border-b border-forest-800 text-xs py-2.5 px-4 sm:px-6 text-linen-100">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+          <div className="flex items-center gap-2.5">
             <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sage-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-sage-500"></span>
             </span>
-            <span className="text-teal-300 font-medium">Boutique 15-Bed Residential Rehabilitation</span>
-            <span className="hidden md:inline text-slate-500">|</span>
-            <span className="hidden md:inline text-slate-400">SPJ • Bengaluru, Karnataka, India</span>
+            <span className="font-medium tracking-wide">SPJ Bengaluru • 15-Bed Residential Sanctuary</span>
+            <span className="hidden md:inline text-forest-700">|</span>
+            <span className="hidden md:inline text-linen-300">Non-Coercive • Evidence-Informed Recovery</span>
           </div>
+
           <div className="flex items-center gap-4 text-xs">
-            <span className="text-slate-400">Confidential 24/7 Clinical Triage:</span>
+            <span className="text-linen-300 hidden sm:inline">24/7 Confidential Clinical Triage:</span>
             <a 
               href="tel:+918029559040" 
-              className="text-teal-300 font-semibold hover:text-teal-200 flex items-center gap-1 transition-colors"
+              className="text-bronze-300 font-semibold hover:text-white flex items-center gap-1.5 transition-colors"
             >
-              <Phone className="w-3.5 h-3.5" />
-              +91 (080) 2955-9040
+              <Phone className="w-3.5 h-3.5 text-bronze-400" />
+              <span>+91 (080) 2955-9040</span>
             </a>
           </div>
         </div>
       </div>
 
-      {/* Main Sticky Navbar */}
-      <header className="sticky top-0 z-40 bg-navy-900/90 backdrop-blur-md border-b border-navy-750">
+      {/* Main Sticky Header */}
+      <header className="sticky top-0 z-40 bg-ivory/95 backdrop-blur-md border-b border-linen-300/80 transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <a href="#" className="flex items-center gap-3 group">
-              <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center shadow-lg shadow-teal-500/20 group-hover:scale-105 transition-transform">
-                <Compass className="w-6 h-6 text-white" />
+          <div className="flex items-center justify-between h-20 sm:h-22">
+            
+            {/* Brand Logo */}
+            <a href="#" className="flex items-center gap-3.5 group">
+              <div className="w-11 h-11 rounded-xl bg-forest-800 flex items-center justify-center text-ivory shadow-md shadow-forest-900/15 group-hover:bg-forest-700 transition-colors">
+                <Compass className="w-6 h-6 text-bronze-300" />
               </div>
               <div className="flex flex-col">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-xl font-extrabold text-white tracking-tight font-display">RESET 360°</span>
-                  <span className="text-xs font-semibold px-1.5 py-0.5 rounded bg-teal-500/20 text-teal-300 border border-teal-500/30">SPJ</span>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-2xl font-bold tracking-tight text-forest-950 font-serif">
+                    RESET 360°
+                  </span>
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-forest-700 px-1.5 py-0.5 rounded bg-linen-200 border border-linen-300 font-sans">
+                    SPJ
+                  </span>
                 </div>
-                <span className="text-[11px] text-slate-400 font-medium tracking-wide">A New Beginning • Bengaluru</span>
+                <span className="text-[11px] text-charcoal-500 font-medium tracking-wider uppercase font-sans">
+                  A New Beginning • Bengaluru
+                </span>
               </div>
             </a>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
-              <a href="#clinical-distinction" className="hover:text-teal-400 transition-colors">Philosophy</a>
-              <a href="#programme-90" className="hover:text-teal-400 transition-colors">90-Day Journey</a>
-              <a href="#mind360" className="hover:text-teal-400 transition-colors">MIND360</a>
-              <a href="#life360" className="hover:text-teal-400 transition-colors">LIFE360 Aftercare</a>
-              <a href="#facility" className="hover:text-teal-400 transition-colors">15-Bed Sanctuary</a>
-              <a href="#team" className="hover:text-teal-400 transition-colors">Clinical Team</a>
-              <a href="#screener" className="text-teal-300 hover:text-teal-200 flex items-center gap-1">
-                <Sparkles className="w-3.5 h-3.5 text-teal-400" />
-                Self-Assessment
+            <nav className="hidden lg:flex items-center gap-8 text-[13px] font-medium text-charcoal-700 font-sans">
+              <a href="#clinical-distinction" className="hover:text-forest-800 transition-colors">Philosophy</a>
+              <a href="#programme-90" className="hover:text-forest-800 transition-colors">90-Day Pathway</a>
+              <a href="#mind360" className="hover:text-forest-800 transition-colors">MIND360</a>
+              <a href="#life360" className="hover:text-forest-800 transition-colors">LIFE360 Aftercare</a>
+              <a href="#facility" className="hover:text-forest-800 transition-colors">Sanctuary</a>
+              <a href="#team" className="hover:text-forest-800 transition-colors">Clinical Team</a>
+              <a href="#screener" className="text-forest-800 font-semibold hover:text-bronze-600 flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-bronze-500" />
+                <span>Self-Assessment</span>
               </a>
             </nav>
 
-            {/* Right Action CTA */}
+            {/* Right Action Button */}
             <div className="hidden sm:flex items-center gap-3">
               <button
                 onClick={onOpenBooking}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-600 text-white font-semibold text-sm shadow-md shadow-teal-600/25 hover:from-teal-400 hover:to-emerald-500 transition-all active:scale-95"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-forest-800 hover:bg-forest-900 text-ivory font-medium text-xs tracking-wide shadow-sm hover:shadow-md transition-all active:scale-98 font-sans"
               >
                 <span>Confidential Consultation</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3.5 h-3.5 text-bronze-300" />
               </button>
             </div>
 
-            {/* Mobile menu button */}
+            {/* Mobile Menu Trigger */}
             <div className="lg:hidden flex items-center gap-2">
               <button
                 onClick={onOpenBooking}
-                className="px-3 py-1.5 rounded-lg bg-teal-500 text-white text-xs font-semibold"
+                className="px-3.5 py-1.5 rounded-full bg-forest-800 text-ivory text-xs font-semibold"
               >
                 Consult
               </button>
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-navy-800 focus:outline-none"
-                aria-label="Toggle menu"
+                className="p-2 rounded-lg text-charcoal-700 hover:text-forest-900 hover:bg-linen-150 transition-colors"
+                aria-label="Toggle Navigation"
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
             </div>
+
           </div>
         </div>
 
-        {/* Mobile dropdown */}
+        {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-navy-950 border-b border-navy-750 px-4 pt-3 pb-6 space-y-3 animate-fade-in">
+          <div className="lg:hidden bg-ivory border-b border-linen-300 px-5 pt-3 pb-6 space-y-3 animate-fade-in shadow-xl">
             <a 
               href="#clinical-distinction" 
               onClick={() => setMobileMenuOpen(false)}
-              className="block py-2 text-slate-200 hover:text-teal-400 border-b border-navy-800 font-medium text-sm"
+              className="block py-2 text-charcoal-800 hover:text-forest-800 border-b border-linen-200 text-sm font-medium"
             >
-              Philosophy & Distinct Model
+              Clinical Philosophy & Boundaries
             </a>
             <a 
               href="#programme-90" 
               onClick={() => setMobileMenuOpen(false)}
-              className="block py-2 text-slate-200 hover:text-teal-400 border-b border-navy-800 font-medium text-sm"
+              className="block py-2 text-charcoal-800 hover:text-forest-800 border-b border-linen-200 text-sm font-medium"
             >
               The 90-Day RESET 360° Pathway
             </a>
             <a 
               href="#mind360" 
               onClick={() => setMobileMenuOpen(false)}
-              className="block py-2 text-slate-200 hover:text-teal-400 border-b border-navy-800 font-medium text-sm"
+              className="block py-2 text-charcoal-800 hover:text-forest-800 border-b border-linen-200 text-sm font-medium"
             >
               MIND360 Behavioural Curriculum
             </a>
             <a 
               href="#life360" 
               onClick={() => setMobileMenuOpen(false)}
-              className="block py-2 text-slate-200 hover:text-teal-400 border-b border-navy-800 font-medium text-sm"
+              className="block py-2 text-charcoal-800 hover:text-forest-800 border-b border-linen-200 text-sm font-medium"
             >
               LIFE360 12-Month Aftercare
             </a>
             <a 
               href="#facility" 
               onClick={() => setMobileMenuOpen(false)}
-              className="block py-2 text-slate-200 hover:text-teal-400 border-b border-navy-800 font-medium text-sm"
+              className="block py-2 text-charcoal-800 hover:text-forest-800 border-b border-linen-200 text-sm font-medium"
             >
-              15-Bed Sanctuary & Space Model
+              The 15-Bed Sanctuary (2,710 Sq. Ft.)
             </a>
             <a 
               href="#team" 
               onClick={() => setMobileMenuOpen(false)}
-              className="block py-2 text-slate-200 hover:text-teal-400 border-b border-navy-800 font-medium text-sm"
+              className="block py-2 text-charcoal-800 hover:text-forest-800 border-b border-linen-200 text-sm font-medium"
             >
-              Multidisciplinary Clinical Team
+              Multidisciplinary Team (20+ Staff)
             </a>
             <a 
               href="#screener" 
               onClick={() => setMobileMenuOpen(false)}
-              className="block py-2 text-teal-400 font-semibold text-sm"
+              className="block py-2 text-forest-800 font-semibold text-sm"
             >
-              ✦ Confidential Suitability Screener
+              ✦ Confidential Suitability Assessment
             </a>
-            <div className="pt-2">
+            <div className="pt-3">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenBooking();
                 }}
-                className="w-full py-3 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-600 text-white font-semibold text-sm text-center shadow-lg"
+                className="w-full py-3 rounded-full bg-forest-800 text-ivory font-semibold text-sm shadow-md"
               >
-                Book a Confidential Consultation
+                Schedule Confidential Consultation
               </button>
             </div>
           </div>

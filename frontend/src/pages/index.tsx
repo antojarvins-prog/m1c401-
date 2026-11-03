@@ -32,21 +32,21 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>RESET 360° | Residential Rehabilitation Institution | SPJ Bengaluru</title>
+        <title>RESET 360° | Residential Rehabilitation Sanctuary | SPJ Bengaluru</title>
         <meta 
           name="description" 
-          content="An integrated, evidence-informed residential rehabilitation programme in Bengaluru for alcohol and substance-use disorders. Combining 90 days of psychiatric care & behavioural transformation with 12 months aftercare." 
+          content="An integrated, evidence-informed residential rehabilitation sanctuary in Bengaluru for alcohol and substance-use disorders. Combining 90 days of psychiatric care & behavioural transformation with 12 months aftercare." 
         />
-        <meta name="keywords" content="rehabilitation centre bangalore, alcohol deaddiction bangalore, residential rehab karnataka, dual diagnosis psychiatric treatment, RESET 360, SPJ de-addiction, non coercive rehab" />
+        <meta name="keywords" content="rehabilitation centre bangalore, alcohol deaddiction bangalore, residential rehab karnataka, dual diagnosis psychiatric treatment, RESET 360, SPJ de-addiction, non coercive rehab, luxury rehab india, sanctuary wellness bangalore" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta property="og:title" content="RESET 360° | A New Beginning. A Different Way of Living." />
-        <meta property="og:description" content="15-bed boutique residential rehabilitation in Bengaluru. 90-day clinical pathway, MIND360 curriculum, and 12 months of structured continuing care." />
+        <meta property="og:description" content="15-bed boutique residential sanctuary in Bengaluru. 90-day clinical pathway, MIND360 curriculum, and 12 months of structured continuing care." />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_IN" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="min-h-screen bg-navy-900 text-slate-100 flex flex-col selection:bg-teal-500 selection:text-white">
+      <div className="min-h-screen bg-ivory text-charcoal-900 flex flex-col selection:bg-sage-200 selection:text-forest-950 font-sans">
         {/* Navigation Bar */}
         <Navbar onOpenBooking={handleOpenBooking} />
 

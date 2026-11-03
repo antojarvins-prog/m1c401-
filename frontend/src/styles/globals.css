@@ -2,25 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
 
 :root {
-  --navy-950: #050b14;
-  --navy-900: #081321;
-  --navy-800: #0e2034;
-  --navy-700: #152d47;
-  --navy-600: #1d3e60;
-
-  --teal-500: #0d9488;
-  --teal-400: #14b8a6;
-  --teal-300: #2dd4bf;
+  --forest-900: #182b23;
+  --forest-800: #233d32;
+  --forest-700: #2e4d40;
+  --forest-600: #3c6152;
   
-  --emerald-600: #059669;
-  --emerald-500: #10b981;
-  --emerald-400: #34d399;
-
-  --amber-500: #f59e0b;
-  --amber-400: #fbbf24;
+  --sage-600: #5c6e57;
+  --sage-500: #788a73;
+  --sage-400: #96a791;
+  --sage-100: #e8ede6;
+  --sage-50:  #f2f5f1;
+  
+  --linen-300: #ded8c7;
+  --linen-200: #e9e5d9;
+  --linen-100: #f4f1ea;
+  --linen-50:  #faf8f4;
+  
+  --ivory: #faf9f5;
+  --ivory-pure: #ffffff;
+  
+  --bronze-600: #93724c;
+  --bronze-500: #b58f65;
+  --bronze-400: #c9a781;
+  --bronze-100: #f5ede4;
+  
+  --charcoal-900: #16201b;
+  --charcoal-800: #222d27;
+  --charcoal-600: #49554e;
+  --charcoal-400: #728078;
 }
 
 * {
@@ -32,65 +44,81 @@
 html {
   scroll-behavior: smooth;
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--ivory);
+  color: var(--charcoal-900);
 }
 
 body {
-  background-color: #081321;
-  color: #f8fafc;
-  line-height: 1.6;
+  background-color: var(--ivory);
+  color: var(--charcoal-900);
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
-  letter-spacing: -0.02em;
+.font-serif-editorial {
+  font-family: 'Cormorant Garamond', Georgia, serif;
 }
 
-/* Custom scrollbar */
+.font-sans-ui {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+.font-display-accent {
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Custom subtle scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #081321;
+  background: #f4f1ea;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1d3e60;
+  background: #c5beae;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #0d9488;
+  background: #788a73;
 }
 
-/* Glassmorphism helpers */
-.glass-panel {
-  background: rgba(14, 32, 52, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+/* Editorial styling utilities */
+.card-sanctuary {
+  background: #ffffff;
+  border: 1px solid rgba(217, 212, 198, 0.7);
+  box-shadow: 0 4px 20px -2px rgba(35, 61, 50, 0.04);
+}
+
+.card-sanctuary-linen {
+  background: #f7f5ef;
+  border: 1px solid rgba(222, 216, 199, 0.8);
+}
+
+.card-sanctuary-forest {
+  background: #233d32;
   border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f7f5ef;
 }
 
-.glass-panel-light {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
+.border-subtle {
+  border-color: rgba(222, 216, 199, 0.8);
 }
 
-.glass-panel-accent {
-  background: linear-gradient(135deg, rgba(13, 148, 136, 0.15), rgba(16, 185, 129, 0.05));
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(45, 212, 191, 0.2);
+.text-bronze-glow {
+  color: #b58f65;
 }
 
-.text-glow {
-  text-shadow: 0 0 25px rgba(20, 184, 166, 0.35);
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.badge-glow {
-  box-shadow: 0 0 15px rgba(20, 184, 166, 0.25);
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
 }
