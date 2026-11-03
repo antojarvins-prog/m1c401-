@@ -1,0 +1,11 @@
+{
+  "name": "reset360-spj-bengaluru-root",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RESET 360° - SPJ Bengaluru Institutional Rehabilitation Website",
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "start": "npm --prefix frontend run start"
+  }
+}

@@ -1,7 +1,8 @@
 {
-  "name": "micro1-platform-frontend",
+  "name": "reset360-spj-bengaluru",
   "version": "1.0.0",
   "private": true,
+  "description": "RESET 360° - Institutional Clinical Residential Rehabilitation Website for SPJ Bengaluru",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -18,7 +19,6 @@
     "tailwindcss": "^3.3.0",
     "autoprefixer": "^10.4.0",
     "postcss": "^8.4.0",
-    "lucide-react": "^0.263.0",
-    "recharts": "^2.7.0"
+    "lucide-react": "^0.263.0"
   }
 }
