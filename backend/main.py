@@ -138,6 +138,12 @@ class CandidateReport(BaseModel):
     areas_for_improvement: List[str]
     recommendations: List[str]
 
+class JobCreate(BaseModel):
+    title: str
+    description: str
+    required_skills: List[str]
+    questions: List[Dict[str, Any]]
+
 
 # In-memory database (replace with actual database in production)
 class InMemoryDB:
@@ -146,6 +152,7 @@ class InMemoryDB:
         self.sessions: Dict[str, Dict[str, Any]] = {}
         self.scores: Dict[str, CandidateScore] = {}
         self.reports: Dict[str, CandidateReport] = {}
+        self.jobs: Dict[str, Dict[str, Any]] = {}
 
     def add_candidate(self, candidate_data: Dict[str, Any]) -> Dict[str, Any]:
         candidate_id = str(uuid.uuid4())
@@ -214,10 +221,10 @@ async def get_candidates(
 ):
     """Get all candidates."""
     candidates = db.get_all_candidates()
-    
+
     if status:
         candidates = [c for c in candidates if c.get('status') == status.value]
-    
+
     return candidates[skip : skip + limit]
 
 
@@ -266,10 +273,10 @@ async def create_interview_session(data: InterviewSessionCreate):
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Candidate not found",
         )
-    
+
     # Create session
     import random
-    
+
     session_id = str(uuid.uuid4())
     questions = [
         {
@@ -286,7 +293,7 @@ async def create_interview_session(data: InterviewSessionCreate):
             ("Describe your ideal work environment and team culture.", "behavioral", 1),
         ][:data.num_questions]
     ]
-    
+
     session = {
         'session_id': session_id,
         'candidate_id': data.candidate_id,
@@ -295,12 +302,12 @@ async def create_interview_session(data: InterviewSessionCreate):
         'started_at': datetime.now().isoformat(),
         'responses': {},
     }
-    
+
     db.sessions[session_id] = session
-    
+
     # Update candidate status
     db.update_candidate(data.candidate_id, {'status': CandidateStatus.IN_PROGRESS.value})
-    
+
     return session
 
 
@@ -323,10 +330,10 @@ async def submit_response(session_id: str, response: ResponseSubmit):
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Interview session not found",
         )
-    
+
     session = db.sessions[session_id]
     session['responses'][response.question_id] = response.response
-    
+
     return {"message": "Response submitted", "question_id": response.question_id}
 
 
@@ -338,10 +345,10 @@ async def complete_interview(session_id: str):
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Interview session not found",
         )
-    
+
     session = db.sessions[session_id]
     candidate_id = session['candidate_id']
-    
+
     # Calculate score (simplified)
     overall_score = round(70 + random.random() * 25, 1)
     breakdown = ScoreBreakdown(
@@ -351,7 +358,7 @@ async def complete_interview(session_id: str):
         problem_solving=round(min(overall_score + random.uniform(-5, 5), 100) / 100, 2),
         cultural_alignment=round(min(overall_score + random.uniform(-5, 5), 100) / 100, 2),
     )
-    
+
     score = CandidateScore(
         candidate_id=candidate_id,
         session_id=session_id,
@@ -359,34 +366,34 @@ async def complete_interview(session_id: str):
         breakdown=breakdown,
         percentile_rank=round(random.uniform(50, 95), 1),
     )
-    
+
     db.scores[candidate_id] = score
-    
+
     # Generate report
     strengths = []
     areas_for_improvement = []
-    
+
     if breakdown.technical_skills > 0.7:
         strengths.append("Strong technical skills")
     else:
         areas_for_improvement.append("Technical skills development")
-    
+
     if breakdown.communication > 0.7:
         strengths.append("Excellent communication")
     else:
         areas_for_improvement.append("Communication clarity")
-    
+
     if breakdown.problem_solving > 0.7:
         strengths.append("Strong problem-solving abilities")
     else:
         areas_for_improvement.append("Problem-solving approach")
-    
+
     recommendations = []
     if breakdown.cultural_alignment < 0.6:
         recommendations.append("Consider company culture alignment")
     if breakdown.technical_skills < 0.6:
         recommendations.append("Pursue additional technical training")
-    
+
     report = CandidateReport(
         report_id=str(uuid.uuid4()),
         candidate_id=candidate_id,
@@ -398,14 +405,14 @@ async def complete_interview(session_id: str):
         areas_for_improvement=areas_for_improvement,
         recommendations=recommendations,
     )
-    
+
     db.reports[report_id] = report
-    
+
     # Update session and candidate status
     session['status'] = 'completed'
     session['completed_at'] = datetime.now().isoformat()
     db.update_candidate(candidate_id, {'status': CandidateStatus.COMPLETED.value})
-    
+
     return report
 
 
@@ -446,22 +453,22 @@ async def get_dashboard_stats():
         c for c in db.candidates.values()
         if c.get('status') == CandidateStatus.IN_PROGRESS.value
     ])
-    
+
     scores = [s.overall_score for s in db.scores.values()]
     avg_score = sum(scores) / len(scores) if scores else 0
-    
+
     # Get top skills
     all_skills = []
     for c in db.candidates.values():
         professional_data = c.get('professional_data', {})
         all_skills.extend(professional_data.get('skills', []))
-    
+
     skill_counts = {}
     for skill in all_skills:
         skill_counts[skill] = skill_counts.get(skill, 0) + 1
-    
+
     top_skills = sorted(skill_counts.items(), key=lambda x: x[1], reverse=True)[:5]
-    
+
     return {
         'total_candidates': total,
         'completed_interviews': completed,
@@ -477,6 +484,22 @@ async def get_recent_activity():
     recent = list(db.candidates.values())
     recent.sort(key=lambda x: x.get('created_at', ''), reverse=True)
     return recent[:10]
+
+# Jobs API
+@app.post("/api/jobs", status_code=status.HTTP_201_CREATED)
+async def create_job(job: JobCreate):
+    """Create a new job opening."""
+    job_id = str(uuid.uuid4())
+    job_data = job.dict()
+    job_data['job_id'] = job_id
+    job_data['created_at'] = datetime.now().isoformat()
+    db.jobs[job_id] = job_data
+    return job_data
+
+@app.get("/api/jobs")
+async def get_jobs():
+    """Get all jobs."""
+    return list(db.jobs.values())
 
 
 if __name__ == "__main__":

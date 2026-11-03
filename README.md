@@ -1,203 +1,98 @@
-# Micro1 AI Platform
+# RESET 360° — Institutional Clinical Rehabilitation Website
+### SPJ | Bengaluru, Karnataka, India
+**"A New Beginning. A Different Way of Living."**
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Version-1.0.0-blue" alt="Version">
-  <img src="https://img.shields.io/badge/Python-3.9%2B-blue" alt="Python">
-  <img src="https://img.shields.io/badge/License-MIT-green" alt="License">
-</p>
-
-An AI-driven behavioral assessment and candidate evaluation platform that replicates the core functionality of Micro1's AI Interview Platform.
-
-## Features
-
-### Core Components
-
-- **Interview Engine** - AI-driven behavioral assessment
-- **Assessment Pipeline** - Multi-stage evaluation system  
-- **Scoring Algorithm** - Proprietary candidate ranking
-- **Candidate Database** - Structured applicant profiles
-- **Employer Dashboard** - Real-time analytics interface
-
-### AI Model Integration
-
-- **GPT-4 (OpenAI)** - Interview generation and natural language processing
-- **Claude (Anthropic)** - Behavioral analysis and reasoning
-- **Proprietary Models** - Domain-specific assessments
-- **Custom Scoring** - Weighted candidate evaluation
-
-### Technical Stack
-
-- **Frontend**: React/Next.js with TypeScript and Tailwind CSS
-- **Backend**: FastAPI (Python) with Node.js compatibility
-- **Security**: JWT authentication, password hashing, audit logging
-- **Compliance**: GDPR, CCPA, bias detection, consent management
-
-## Architecture
-
-### Weighted Scoring Algorithm
-
-| Category | Weight |
-|----------|--------|
-| Technical Skills | 35% |
-| Behavioral Fit | 25% |
-| Communication | 20% |
-| Problem Solving | 15% |
-| Cultural Alignment | 5% |
-
-### Data Flow Pipeline
-
-1. **Candidate Registration** - Profile creation
-2. **Interview Generation** - AI-powered question creation
-3. **Response Collection** - Answer collection
-4. **Response Analysis** - Multi-model analysis
-5. **Scoring** - Weighted evaluation
-6. **Report Generation** - Candidate report
-
-## Quick Start
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/your-repo/micro1-platform.git
-cd micro1-platform
-
-# Install dependencies
-pip install -r micro1_platform/requirements.txt
-
-# Run the backend
-cd micro1_platform/backend
-python main.py
-```
-
-### API Usage
-
-```python
-from micro1_platform import initialize_platform, initialize_pipeline
-
-# Initialize platform
-platform = initialize_platform()
-
-# Register a candidate
-candidate = platform.register_candidate(
-    name="John Doe",
-    email="john@example.com",
-    experience_years=5,
-    skills=["Python", "JavaScript", "AWS"]
-)
-
-# Create interview session
-session = platform.create_interview_session(candidate.candidate_id)
-```
-
-### REST API Endpoints
-
-```bash
-# Health check
-GET /api/health
-
-# Create candidate
-POST /api/candidates
-{
-  "personal_info": {
-    "name": "John Doe",
-    "email": "john@example.com"
-  },
-  "professional_data": {
-    "experience": 5,
-    "skills": ["Python", "JavaScript"]
-  }
-}
-
-# Create interview session
-POST /api/interviews
-{
-  "candidate_id": "uuid",
-  "num_questions": 5
-}
-
-# Complete interview
-POST /api/interviews/{session_id}/complete
-
-# Get dashboard stats
-GET /api/dashboard/stats
-```
-
-## Project Structure
-
-```
-micro1_platform/
-├── core.py                 # Core platform architecture
-├── ai_pipeline.py         # AI model integration
-├── scoring.py           # Scoring engine
-├── data_flow.py         # Data flow pipeline
-├── security.py         # Security & compliance
-├── __init__.py        # Package exports
-├── requirements.txt  # Python dependencies
-├── backend/
-│   └── main.py       # FastAPI backend
-└── frontend/
-    ├── package.json
-    ├── tailwind.config.js
-    └── src/
-        ├── components/
-        │   └── Dashboard.tsx
-        ├── pages/
-        │   └── index.tsx
-        ├── styles/
-        │   └── globals.css
-        └── lib/
-            └── api.ts
-```
-
-## Security Features
-
-- **Input Validation** - SQL injection and XSS prevention
-- **Password Hashing** - PBKDF2 with HMAC-SHA256
-- **JWT Tokens** - Secure authentication
-- **Consent Management** - GDPR/CCPA compliance
-- **Audit Logging** - Complete action tracking
-- **Bias Detection** - Fair hiring practices
-
-## Compliance
-
-### Data Privacy
-
-- GDPR compliance
-- CCPA compliance  
-- Data encryption standards
-- Consent management
-
-### Employment Law
-
-- Non-discrimination policies
-- Fair hiring practices
-- Documentation requirements
-
-### AI Ethics
-
-- Bias mitigation
-- Transparency in scoring
-- Candidate consent
-
-## API Documentation
-
-Once running, visit:
-
-- Swagger UI: `http://localhost:3000/api/docs`
-- ReDoc: `http://localhost:3000/api/redoc`
-
-## License
-
-MIT License - See LICENSE file for details.
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+An integrated, evidence-informed residential rehabilitation web application for alcohol and substance-use disorders, built with **Next.js**, **React**, **TypeScript**, and **Tailwind CSS**, designed for direct deployment on **Vercel**.
 
 ---
 
-Built with ❤️ using Python, FastAPI, React, and AI
+## 🌟 Key Platform Features
+
+1. **Post-Crisis Clinical Distinction:** Clear architectural boundaries distinguishing residential rehabilitation from acute hospital detoxification.
+2. **The 90-Day Patient Journey:** Interactive 7-stage roadmap (Understand, Stabilise, Reset the Mind, Recondition, Rebuild Identity, Real-Life Practice, Reintegrate).
+3. **MIND360 Behavioural Curriculum:** 4 pillars (Think, Feel, Act, Live), 9-week syllabus, and an interactive **Trigger Simulation Lab** (therapist-guided role-play scenarios).
+4. **LIFE360 12-Month Aftercare Framework:** Structured continuity covering family, career, independent living, and clinical relapse prevention.
+5. **The 15-Bed Sanctuary (2,710 Sq. Ft.):** Detailed architectural space breakdown and daily living schedule.
+6. **20+ Multidisciplinary Team:** Dedicated staffing for 15 residents with Medical Director clinical primacy.
+7. **Interactive Confidential Suitability Screener:** Self-assessment triage for families and individuals.
+8. **Non-Coercive Care Charter:** Explicit ethical pledge complying with the Mental Healthcare Act, 2017 (zero punitive punishment, zero forced pickups, total dignity).
+
+---
+
+## 🚀 One-Click Vercel Deployment
+
+This repository is pre-configured with `vercel.json` and a root `package.json`.
+
+### Option A: Deploy via GitHub (Recommended)
+1. Push this repository to GitHub.
+2. Go to [Vercel](https://vercel.com) and click **"Add New..." → "Project"**.
+3. Import this repository.
+4. If asked for **Root Directory**, you can either leave it as default (`.`) or select `frontend`.
+5. Click **Deploy**. Vercel will build and assign a live shareable URL (e.g. `https://reset360-spj.vercel.app`).
+
+### Option B: Deploy via Vercel CLI
+```bash
+npm install -g vercel
+vercel
+```
+
+---
+
+## 💻 Local Development
+
+To run the platform locally on your machine:
+
+```bash
+# Navigate to frontend
+cd frontend
+
+# Install dependencies (if not already installed)
+npm install
+
+# Start local Next.js development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## 📁 Repository Structure
+
+```
+d:/m1c401-/
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Navbar.tsx             # Sticky header with triage bar
+│   │   │   ├── Hero.tsx               # Cinematic hero with 4 core metrics
+│   │   │   ├── ClinicalDistinction.tsx # Acute detox vs rehabilitation boundary
+│   │   │   ├── CarePhilosophy.tsx     # 6 principles & Non-coercive charter
+│   │   │   ├── Journey90Days.tsx      # 7-stage milestone interactive explorer
+│   │   │   ├── Mind360Curriculum.tsx  # 4 pillars & Trigger Simulation Lab
+│   │   │   ├── Life360Aftercare.tsx   # 12-month cadence & reintegration
+│   │   │   ├── FacilitySpaces.tsx     # 2,710 sq. ft. space model & day schedule
+│   │   │   ├── TeamStaffing.tsx       # 20+ staffing model & clinical governance
+│   │   │   ├── SuitabilityScreener.tsx # 4-step interactive self-assessment
+│   │   │   ├── AdmissionWorkflow.tsx  # 5-step admission protocol
+│   │   │   ├── FAQ.tsx                # High-trust accordion Q&A
+│   │   │   ├── ConsultationModal.tsx  # Confidential booking dialog
+│   │   │   └── Footer.tsx             # Complete institutional footer
+│   │   ├── pages/
+│   │   │   ├── _app.tsx
+│   │   │   └── index.tsx              # Master presentation page
+│   │   └── styles/
+│   │       └── globals.css            # Custom design tokens, glassmorphism, glows
+│   ├── package.json
+│   ├── tailwind.config.js
+│   └── tsconfig.json
+├── vercel.json                        # Vercel deployment specification
+├── package.json                       # Root script forwarding
+└── .gitignore
+```
+
+---
+
+## 🛡️ Care Philosophy
+
+> *"Addiction is treatable without moral judgment. Medical safety comes first. Psychiatric care is essential. Recovery is individual. Behaviour changes through practice. Recovery continues after discharge."*
